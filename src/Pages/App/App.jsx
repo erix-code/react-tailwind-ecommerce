@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import {useState} from 'react'
+import {useRoutes, BrowserRouter} from "react-router-dom";
 
-import  Shop from "../Shop/Shop.jsx";
+import Shop from "../Shop/Shop.jsx";
 import Login from "../User/LogIn/Login.jsx"
 import MyOrders from "../User/MyOrders/MyOrders.jsx";
 import Order from "../User/Order/Order.jsx";
@@ -9,19 +10,26 @@ import NotFound from "../NotFound/NotFound.jsx";
 
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const AppRoutes = () => {
+    const routes = useRoutes([
+        {path: "/", element: <Shop></Shop>, },
+        {path: "/login", element: <Login></Login>},
+        {path: "/user/my-orders", element: <MyOrders></MyOrders>},
+        {path: "/user/order/:id", element: <Order></Order>},
+        {path: "/user/profile", element: <Profile></Profile>},
+        {path: "/*", element: <NotFound></NotFound>},
+    ]);
+    return routes;
+}
 
-  return (
-    <div className={"w-full bg-red-50"}>
-        <Shop></Shop>
-        <MyOrders></MyOrders>
-        <Order></Order>
-        <Profile></Profile>
-        <Login></Login>
-        <NotFound></NotFound>
-    </div>
-  )
+function App() {
+    return (
+        <div className={"w-full bg-red-50"}>
+            <BrowserRouter>
+                <AppRoutes></AppRoutes>
+            </BrowserRouter>
+        </div>
+    )
 }
 
 export default App

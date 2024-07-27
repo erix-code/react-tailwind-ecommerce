@@ -1,9 +1,10 @@
 import React from "react";
+import Layout from "../../../Components/Shop/Layout.jsx";
 
 export default function Login() {
     return (
-        <div className={"bg-green-400"}>
+        <Layout>
             <h1>Login Page</h1>
-        </div>
+        </Layout>
     );
 }

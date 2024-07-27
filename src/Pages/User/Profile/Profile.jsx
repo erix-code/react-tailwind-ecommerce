@@ -1,9 +1,9 @@
 import React from "react";
-
+import Layout from "../../../Components/Shop/Layout.jsx";
 export default function Profile () {
     return (
-        <div>
+        <Layout>
             <h1>Profile</h1>
-        </div>
+        </Layout>
     )
 }

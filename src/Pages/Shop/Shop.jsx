@@ -1,10 +1,11 @@
 import React from "react";
+import Layout from "../../Components/Shop/Layout.jsx";
 
 
 export default function Shop() {
     return (
-        <div className={"bg-white"}>
+        <Layout>
             <h1>Home</h1>
-        </div>
+        </Layout>
     )
 }

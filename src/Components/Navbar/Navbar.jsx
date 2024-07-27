@@ -21,18 +21,20 @@ export default function Navbar() {
 
     return (
         <header>
-            <nav className={"h-20 w-full flex flex-row justify-between items-center fixed top-0 left-0 z-10 px-8 font-Raleway font-light"}>
-                <ul className={"w-1/2 flex flex-row  space-x-5  justify-start"}>
-                    <li className={"text-lg font-semibold pr-2 "}>
-                        <NavLink className={"flex flex-row items-center uppercase justify-start text-gray-500  "} to="/">
-                            <FaFireFlameCurved ></FaFireFlameCurved>
-                            <p className={"pl-2"}>MultiTienda</p>
-
+            <nav className={"h-20 w-full flex flex-row justify-between items-center fixed top-0 left-0 z-10 px-6 font-Raleway font-light"}>
+                <ul className={"w-1/2 flex flex-row  space-x-5  justify-start items-center"}>
+                    <li className={" font-semibold pr-2 "}>
+                        <NavLink className={"flex flex-row items-center uppercase justify-between text-gray-500  "} to="/">
+                            <FaFireFlameCurved className={"text-3xl"}></FaFireFlameCurved>
+                            <div className={"flex flex-col items-center justify-center pl-1"}>
+                                <p className={"font-bold text-black text-lg"}>MultiTienda</p>
+                                <p className={"text-xs"}>Los Mejores Precios</p>
+                            </div>
                         </NavLink>
                     </li>
-                    {leftNavbar.map(item => {
+                    {leftNavbar.map((item, index) => {
                         return (
-                            <li>
+                            <li key={index}>
                                 <Link url={item.url} title={item.name} baseClass={"hover:underline underline-offset-8 hover:font-bold"} activeClass={activeClass} />
                             </li>
                         )
@@ -43,9 +45,9 @@ export default function Navbar() {
                     <li className={"text-gray-500 font-semibold"}>
                         ermateze@gmail.com
                     </li>
-                    {rightNavbar.map(item => {
+                    {rightNavbar.map((item, index) => {
                         return (
-                            <li>
+                            <li key={index}>
                                 <Link url={item.url} title={item.name} baseClass={"hover:underline underline-offset-8 hover:font-bold"} activeClass={activeClass} />
                             </li>
                         )

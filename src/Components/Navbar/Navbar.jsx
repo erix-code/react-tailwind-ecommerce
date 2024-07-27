@@ -21,7 +21,7 @@ export default function Navbar() {
 
     return (
         <header>
-            <nav className={"h-20 w-full flex flex-row justify-between items-center fixed top-0 left-0 z-10 px-6 font-Raleway font-light"}>
+            <nav className={"h-20 w-full flex flex-row justify-between items-center fixed top-0 left-0 z-10 px-6 font-Raleway font-light bg-white"}>
                 <ul className={"w-1/2 flex flex-row  space-x-5  justify-start items-center"}>
                     <li className={" font-semibold pr-2 "}>
                         <NavLink className={"flex flex-row items-center uppercase justify-between text-gray-500  "} to="/">

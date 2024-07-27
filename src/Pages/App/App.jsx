@@ -7,7 +7,7 @@ import MyOrders from "../User/MyOrders/MyOrders.jsx";
 import Order from "../User/Order/Order.jsx";
 import Profile from "../User/Profile/Profile.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
-
+import Navbar from "../../Components/Navbar/Navbar.jsx";
 import './App.css'
 
 const AppRoutes = () => {
@@ -24,11 +24,13 @@ const AppRoutes = () => {
 
 function App() {
     return (
-        <div className={"w-full bg-red-50"}>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Navbar></Navbar>
+            <div>
                 <AppRoutes></AppRoutes>
-            </BrowserRouter>
-        </div>
+            </div>
+
+        </BrowserRouter>
     )
 }
 

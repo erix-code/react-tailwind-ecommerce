@@ -28,7 +28,7 @@ export default function Navbar() {
                             <FaFireFlameCurved className={"text-3xl"}></FaFireFlameCurved>
                             <div className={"flex flex-col items-center justify-center pl-1"}>
                                 <p className={"font-bold text-black text-lg"}>MultiTienda</p>
-                                <p className={"text-xs"}>Los Mejores Precios</p>
+                                <p className={"text-xs lg:hidden xl:block"}>Los Mejores Precios</p>
                             </div>
                         </NavLink>
                     </li>
@@ -42,9 +42,6 @@ export default function Navbar() {
 
                 </ul>
                 <ul className={"w-1/2 flex flex-row space-x-5 justify-end "}>
-                    <li className={"text-gray-500 font-semibold"}>
-                        ermateze@gmail.com
-                    </li>
                     {rightNavbar.map((item, index) => {
                         return (
                             <li key={index}>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import { NavLink } from "react-router-dom";
 import Link  from "./Link/Link.jsx";
 import { FaFireFlameCurved  } from "react-icons/fa6";
 import { BsBag } from "react-icons/bs";
+import {ShoppingCartContext} from "../../Context/ShoppinCartContext.jsx";
 
 const leftNavbar = [
     {name: "General", url: "/"},
@@ -17,6 +18,7 @@ const rightNavbar = [
     {name: "Ingresar", url: "/login"},
 ];
 export default function Navbar() {
+    const { counter } = useContext(ShoppingCartContext);
     const activeClass = "underline font-bold underline-offset-8";
 
     return (
@@ -41,7 +43,7 @@ export default function Navbar() {
                     })}
 
                 </ul>
-                <ul className={"w-1/2 flex flex-row space-x-5 justify-end "}>
+                <ul className={"w-1/2 flex flex-row space-x-5 justify-end items-center"}>
                     {rightNavbar.map((item, index) => {
                         return (
                             <li key={index}>
@@ -49,8 +51,9 @@ export default function Navbar() {
                             </li>
                         )
                     })}
-                    <li>
+                    <li className={"text-gray-500 text-2xl flex justify-center gap-2 items-center"}>
                         <BsBag></BsBag>
+                        {counter}
                     </li>
                 </ul>
             </nav>

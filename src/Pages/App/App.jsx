@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {useRoutes, BrowserRouter} from "react-router-dom";
-
+import { ShoppingCartProvider } from "../../Context/ShoppinCartContext.jsx";
 import Shop from "../Shop/Shop.jsx";
 import Login from "../User/LogIn/Login.jsx"
 import MyOrders from "../User/MyOrders/MyOrders.jsx";
@@ -8,7 +8,7 @@ import Order from "../User/Order/Order.jsx";
 import Profile from "../User/Profile/Profile.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import Navbar from "../../Components/Navbar/Navbar.jsx";
-import './App.css'
+import './App.css';
 
 const AppRoutes = () => {
     const routes = useRoutes([
@@ -24,13 +24,14 @@ const AppRoutes = () => {
 
 function App() {
     return (
-        <BrowserRouter>
-            <Navbar></Navbar>
-            <div>
-                <AppRoutes></AppRoutes>
-            </div>
-
-        </BrowserRouter>
+        <ShoppingCartProvider>
+            <BrowserRouter>
+                <Navbar></Navbar>
+                <div>
+                    <AppRoutes></AppRoutes>
+                </div>
+            </BrowserRouter>
+        </ShoppingCartProvider>
     )
 }
 

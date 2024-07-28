@@ -1,7 +1,8 @@
+import React, {useEffect, useContext} from "react";
+import {ShoppingCartContext} from "../../Context/ShoppinCartContext.jsx";
 export default function Card({product}) {
-
+    const { counter, setCounter} = useContext(ShoppingCartContext);
     useEffect(() => {
-        console.log(product);
     }, []);
     return(
         <div className={"flex flex-row justify-center items-center"}>
@@ -12,10 +13,11 @@ export default function Card({product}) {
                     <img src={product.image} alt={product.title}
                          className={"w-full h-full object-cover rounded-lg"}
                     />
-                    <div
+                    <button
+                        onClick={() => {setCounter(counter + 1)}}
                         className={"absolute top-0 right-0 flex justify-center items-center rounded-full bg-white w-8 h-8 m-2 p-1 font-bold"}>
                         +
-                    </div>
+                    </button>
                 </figure>
                 <p className={"flex justify-between pl-2"}>
                     <span className={"text-sm font-normal"}>{product.title}</span>
@@ -26,4 +28,4 @@ export default function Card({product}) {
     )
 }
 
-import React, {useEffect} from "react";
+

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import Layout from "../../Components/Shop/Layout.jsx";
 import Card from "../../Components/Shop/Card.jsx";
 import axios from "axios";
+import ProductDetail from "../../Components/Shop/Product/ProductDetail.jsx";
 export default function Shop() {
     const [ products, setProducts ] = useState(null);
 
@@ -22,7 +23,7 @@ export default function Shop() {
                     (<Card key={index} product={item}></Card>)
                 )}
             </div>
-
+            <ProductDetail/>
         </Layout>
     )
 }

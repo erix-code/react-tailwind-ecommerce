@@ -1,11 +1,14 @@
 import React, {useEffect, useContext} from "react";
 import {ShoppingCartContext} from "../../Context/ShoppinCartContext.jsx";
+import {ProductDetailContext} from "../../Context/ProductDetailContext.jsx";
 export default function Card({product}) {
-    const { counter, setCounter} = useContext(ShoppingCartContext);
+    const { counter, setCounter } = useContext(ShoppingCartContext);
+    const { isModalOpen, triggerModal } = useContext(ProductDetailContext);
+
     useEffect(() => {
     }, []);
     return(
-        <div className={"flex flex-row justify-center items-center"}>
+        <div className={"flex flex-row justify-center items-center"} onClick={() => triggerModal()}>
             <div className={"bg-white cursor-pointer w-56 h-72 rounded-lg text-black"}>
                 <figure className={"relative mb-2 w-full h-4/5"}>
                     <span

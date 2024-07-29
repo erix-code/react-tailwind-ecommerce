@@ -9,6 +9,7 @@ import Profile from "../User/Profile/Profile.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import Navbar from "../../Components/Navbar/Navbar.jsx";
 import './App.css';
+import ProductDetailProvider, {ProductDetailContext} from "../../Context/ProductDetailContext.jsx";
 
 const AppRoutes = () => {
     const routes = useRoutes([
@@ -24,14 +25,17 @@ const AppRoutes = () => {
 
 function App() {
     return (
-        <ShoppingCartProvider>
-            <BrowserRouter>
-                <Navbar></Navbar>
-                <div>
-                    <AppRoutes></AppRoutes>
-                </div>
-            </BrowserRouter>
-        </ShoppingCartProvider>
+        <ProductDetailProvider>
+            <ShoppingCartProvider>
+                <BrowserRouter>
+                    <Navbar></Navbar>
+                    <div>
+                        <AppRoutes></AppRoutes>
+                    </div>
+                </BrowserRouter>
+            </ShoppingCartProvider>
+        </ProductDetailProvider>
+
     )
 }
 

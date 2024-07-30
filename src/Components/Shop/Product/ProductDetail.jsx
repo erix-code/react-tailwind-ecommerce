@@ -1,12 +1,13 @@
 import React, {useContext, useState} from "react";
-import "./produc-detail.css";
+import "../../Cart/produc-detail.css";
 import {RiCloseLargeLine} from "react-icons/ri";
 import {ProductDetailContext} from "../../../Context/ProductDetailContext.jsx";
 export default function ProductDetail() {
     const { isModalOpen, triggerModal, selectedProduct } = useContext(ProductDetailContext);
-    console.log(selectedProduct);
+
+
     return (
-        <aside className={"fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" } hidden={!isModalOpen}>
+        <aside className={"fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 md:pt-20 xl:pt-0" } hidden={!isModalOpen}>
             <div className={"bg-white rounded-lg border shadow-2xl product-detail overflow-y-auto"}>
                 <div className={"flex justify-between p-3 border border-b-gray-300"}>
                     <div className={"text-lg"}>Detalles</div>

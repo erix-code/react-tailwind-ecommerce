@@ -1,7 +1,8 @@
 import React, {useContext, useState} from "react";
-import "../../Cart/produc-detail.css";
 import {RiCloseLargeLine} from "react-icons/ri";
 import {ProductDetailContext} from "../../../Context/ProductDetailContext.jsx";
+import "./styles.css";
+
 export default function ProductDetail() {
     const { isModalOpen, triggerModal, selectedProduct } = useContext(ProductDetailContext);
 

@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
 import {useRoutes, BrowserRouter} from "react-router-dom";
 import { ShoppingCartProvider } from "../../Context/ShoppinCartContext.jsx";
 import Shop from "../Shop/Shop.jsx";
@@ -10,6 +10,7 @@ import NotFound from "../NotFound/NotFound.jsx";
 import Navbar from "../../Components/Navbar/Navbar.jsx";
 import './App.css';
 import ProductDetailProvider, {ProductDetailContext} from "../../Context/ProductDetailContext.jsx";
+import Cart from "../../Components/Cart/Cart.jsx";
 
 const AppRoutes = () => {
     const routes = useRoutes([
@@ -32,6 +33,8 @@ function App() {
                     <div>
                         <AppRoutes></AppRoutes>
                     </div>
+                    <Cart></Cart>
+
                 </BrowserRouter>
             </ShoppingCartProvider>
         </ProductDetailProvider>

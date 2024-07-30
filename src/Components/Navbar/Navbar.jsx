@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
-import { NavLink } from "react-router-dom";
-import Link  from "./Link/Link.jsx";
-import { FaFireFlameCurved  } from "react-icons/fa6";
-import { BsBag } from "react-icons/bs";
+import {NavLink} from "react-router-dom";
+import Link from "./Link/Link.jsx";
+import {FaFireFlameCurved} from "react-icons/fa6";
+import {BsBag} from "react-icons/bs";
 import {ShoppingCartContext} from "../../Context/ShoppinCartContext.jsx";
 
 const leftNavbar = [
@@ -18,7 +18,7 @@ const rightNavbar = [
     {name: "Ingresar", url: "/login"},
 ];
 export default function Navbar() {
-    const { counter } = useContext(ShoppingCartContext);
+    const {counter, isCartOpen, setIsCartOpen} = useContext(ShoppingCartContext);
     const activeClass = "underline font-bold underline-offset-8";
 
     return (
@@ -51,7 +51,7 @@ export default function Navbar() {
                             </li>
                         )
                     })}
-                    <li className={"text-gray-500 text-2xl flex justify-center gap-2 items-center"}>
+                    <li className={"text-gray-500 text-2xl flex justify-center gap-2 items-center"} onClick={() => {setIsCartOpen(true)}}>
                         <BsBag></BsBag>
                         {counter}
                     </li>

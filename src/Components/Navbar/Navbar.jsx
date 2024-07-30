@@ -51,7 +51,7 @@ export default function Navbar() {
                             </li>
                         )
                     })}
-                    <li className={"text-gray-500 text-2xl flex justify-center gap-2 items-center"} onClick={() => {setIsCartOpen(true)}}>
+                    <li className={"text-gray-500 text-2xl flex justify-center gap-2 items-center"} onClick={(event) => {setIsCartOpen(true)}}>
                         <BsBag></BsBag>
                         {counter}
                     </li>

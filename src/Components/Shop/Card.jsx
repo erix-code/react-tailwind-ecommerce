@@ -11,18 +11,39 @@ export default function Card({product}) {
         triggerModal();
         setSelectedProduct(product);
     }
+    const updateCartProducts = (cartProducts, newProduct ) => {
+        const newCartProducts = [...cartProducts];
+        const productIndex = newCartProducts.findIndex((product) => {
+           return product.id === newProduct.id;
+        });
+        if (productIndex >= 0) {
+            newCartProducts[productIndex].quantity += 1;
+            newCartProducts[productIndex].totalAmount = newCartProducts[productIndex].quantity * newCartProducts[productIndex].price;
+            setCartProducts([...newCartProducts]);
 
+        } else {
+            newProduct.quantity = 1;
+            newProduct.totalAmount = parseFloat(newProduct.quantity * newProduct.price).toFixed(2);
+            setCartProducts([...newCartProducts, newProduct]);
+        }
+    }
     const addProductsToCart= (event, product) => {
         event.stopPropagation();
         setCounter(counter + 1);
-        setCartProducts([...cartProducts, product]);
+        updateCartProducts(cartProducts, product);
         setIsModalOpen(false);
         setIsCartOpen(true);
-
+    }
+    const formatTitle = (title) => {
+        let newTitle = title;
+        if (title.length > 50) {
+            newTitle = title.substring(0, 50) + "...";
+        }
+        return newTitle;
     }
 
     return(
-        <div className={"flex flex-row justify-center items-center "} >
+        <div className={"flex flex-row justify-center items-center  "} >
             <div className={"bg-white cursor-pointer w-44 h-52  md:w-56  md:h-72 rounded-lg text-black"}>
                 <figure className={"relative mb-2 w-full h-4/5  hover:scale-110"}>
                     <span
@@ -36,9 +57,9 @@ export default function Card({product}) {
                         +
                     </button>
                 </figure>
-                <p className={"flex justify-between pl-2 cursor-text"}>
-                    <span className={"text-sm font-normal"}>{product.title}</span>
-                    <span className={"text-lg font-semibold min-w-14"}>{product.price} $</span>
+                <p className={"flex justify-between pl-2 cursor-text "}>
+                    <span className={"text-xs md:text-sm font-normal "}>{formatTitle(product.title) }</span>
+                    <span className={"text-md md:text-lg font-semibold min-w-14"}>{product.price}$</span>
                 </p>
             </div>
         </div>

@@ -23,7 +23,7 @@ export default function Navbar() {
 
     return (
         <header>
-            <nav className={"h-20 w-full flex flex-row justify-between items-center fixed top-0 left-0 z-10 px-6 font-Raleway font-light bg-white"}>
+            <nav className={"h-20 w-full flex flex-row justify-between items-center fixed top-0 left-0 z-10 md:px-6  font-Raleway font-light bg-white"}>
                 <ul className={"w-1/2 flex flex-row  space-x-5  justify-start items-center"}>
                     <li className={" font-semibold pr-2 "}>
                         <NavLink className={"flex flex-row items-center uppercase justify-between text-gray-500  "} to="/">
@@ -36,7 +36,7 @@ export default function Navbar() {
                     </li>
                     {leftNavbar.map((item, index) => {
                         return (
-                            <li key={index}>
+                            <li key={index} className={"hidden md:block"}>
                                 <Link url={item.url} title={item.name} baseClass={"hover:underline underline-offset-8 hover:font-bold"} activeClass={activeClass} />
                             </li>
                         )
@@ -46,7 +46,7 @@ export default function Navbar() {
                 <ul className={"w-1/2 flex flex-row space-x-5 justify-end items-center"}>
                     {rightNavbar.map((item, index) => {
                         return (
-                            <li key={index}>
+                            <li key={index} className={"hidden md:block"}>
                                 <Link url={item.url} title={item.name} baseClass={"hover:underline underline-offset-8 hover:font-bold"} activeClass={activeClass} />
                             </li>
                         )

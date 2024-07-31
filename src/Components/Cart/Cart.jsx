@@ -5,10 +5,17 @@ import OrderCart from "./OrderCart/OrderCart.jsx";
 import "./styles.css";
 
 export default function Cart() {
-    const { isCartOpen, setIsCartOpen, cartProducts } = useContext(ShoppingCartContext);
-    useEffect(() => {
-        console.log("CART PRODUCTS", cartProducts);
-    }, cartProducts)
+    const { isCartOpen, setIsCartOpen, cartProducts, setCartProducts, setCounter } = useContext(ShoppingCartContext);
+
+    const removeProduct = (selectedProduct) => {
+        const newCartProducts = cartProducts;
+        const index = newCartProducts.findIndex((product) => {
+            return product.id === selectedProduct.id;
+        });
+        const deleted = newCartProducts.splice(index, 1);
+        setCartProducts([...newCartProducts]);
+    }
+
     return (
         <aside className={"fixed top-20 right-0 md:pt-0 xl:pt-0 "}
                hidden={!isCartOpen}>
@@ -22,7 +29,7 @@ export default function Cart() {
                 </div>
                 <div className={"body pt-2"}>
                     {cartProducts.map(((product, index) => (
-                            <OrderCart key={index} product={product}></OrderCart>
+                            <OrderCart key={index} product={product} removeProduct={(product) => {removeProduct(product)}}></OrderCart>
                         )
                     ))}
                 </div>

@@ -1,20 +1,27 @@
 import React, {useEffect, useContext} from "react";
 import {ShoppingCartContext} from "../../Context/ShoppinCartContext.jsx";
 import {ProductDetailContext} from "../../Context/ProductDetailContext.jsx";
-import { GoPlus } from "react-icons/go";
+import {GoPlus} from "react-icons/go";
 
 export default function Card({product}) {
-    const { counter, setCounter, setCartProducts, cartProducts, isCartOpen, setIsCartOpen} = useContext(ShoppingCartContext);
-    const { isModalOpen, setIsModalOpen, triggerModal, setSelectedProduct } = useContext(ProductDetailContext);
+    const {
+        counter,
+        setCounter,
+        setCartProducts,
+        cartProducts,
+        isCartOpen,
+        setIsCartOpen
+    } = useContext(ShoppingCartContext);
+    const {isModalOpen, setIsModalOpen, triggerModal, setSelectedProduct} = useContext(ProductDetailContext);
 
     const onSelectProduct = (product) => {
         triggerModal();
         setSelectedProduct(product);
     }
-    const updateCartProducts = (cartProducts, newProduct ) => {
+    const updateCartProducts = (newProduct) => {
         const newCartProducts = [...cartProducts];
         const productIndex = newCartProducts.findIndex((product) => {
-           return product.id === newProduct.id;
+            return product.id === newProduct.id;
         });
         if (productIndex >= 0) {
             newCartProducts[productIndex].quantity += 1;
@@ -29,8 +36,7 @@ export default function Card({product}) {
     }
     const addProductsToCart= (event, product) => {
         event.stopPropagation();
-        setCounter(counter + 1);
-        updateCartProducts(cartProducts, product);
+        updateCartProducts(product);
         setIsModalOpen(false);
         setIsCartOpen(true);
     }
@@ -41,9 +47,12 @@ export default function Card({product}) {
         }
         return newTitle;
     }
+    useEffect(() => {
+        setCounter(cartProducts.length);
+    }, [cartProducts])
 
-    return(
-        <div className={"flex flex-row justify-center items-center  "} >
+    return (
+        <div className={"flex flex-row justify-center items-center  "}>
             <div className={"bg-white cursor-pointer w-44 h-52  md:w-56  md:h-72 rounded-lg text-black"}>
                 <figure className={"relative mb-2 w-full h-4/5  hover:scale-110"}>
                     <span
@@ -52,13 +61,15 @@ export default function Card({product}) {
                          className={"w-full h-full object-cover rounded-lg"}
                     />
                     <button
-                        onClick={(event) => {addProductsToCart(event, product)}}
+                        onClick={(event) => {
+                            addProductsToCart(event, product)
+                        }}
                         className={"absolute top-0 right-0 flex justify-center items-center rounded-full bg-white w-8 h-8 m-2 p-1 font-bold"}>
                         +
                     </button>
                 </figure>
                 <p className={"flex justify-between pl-2 cursor-text "}>
-                    <span className={"text-xs md:text-sm font-normal "}>{formatTitle(product.title) }</span>
+                    <span className={"text-xs md:text-sm font-normal "}>{formatTitle(product.title)}</span>
                     <span className={"text-md md:text-lg font-semibold min-w-14"}>{product.price}$</span>
                 </p>
             </div>

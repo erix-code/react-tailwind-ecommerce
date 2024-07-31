@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {RiCloseLargeLine} from "react-icons/ri";
 import {ShoppingCartContext} from "../../Context/ShoppinCartContext.jsx";
 import OrderCart from "./OrderCart/OrderCart.jsx";
+import {OrderSum} from "../../Utlis/OrderSum.js";
 import "./styles.css";
 
 export default function Cart() {
@@ -33,6 +34,16 @@ export default function Cart() {
                         )
                     ))}
                 </div>
+                <div className={`justify-between items-center p-8 ${cartProducts.length > 0 ? "flex" : "hidden"}`}>
+                    <div className={"font-semibold text-xl  "}>
+                        Precio total:
+                    </div>
+                    <div>
+                        {OrderSum(cartProducts)}$
+                    </div>
+                </div>
+
+
                 <div className={"flex justify-center items-center mb-20 pt-5"}>
                     <button className={"rounded-xl bg-black text-white p-2 w-4/5 text-md"}>
                         Comprar

@@ -3,6 +3,7 @@ import Layout from "../../Components/Shop/Layout.jsx";
 import Card from "../../Components/Shop/Card.jsx";
 import axios from "axios";
 import ProductDetail from "../../Components/Shop/Product/ProductDetail.jsx";
+import Title from "../../Components/Title/Title.jsx";
 export default function Shop() {
     const [ products, setProducts ] = useState(null);
 
@@ -17,7 +18,7 @@ export default function Shop() {
     }
     return (
         <Layout>
-            <h1 className={"text-2xl font-bold mb-20"}>Home</h1>
+            <Title>General</Title>
             <div className={"grid lg:grid-cols-5 grid-cols-2  px-1 md:px-10 auto-rows-auto md:gap-y-10 gap-y-24 gap-x-1"}>
                 {products?.map((item, index) =>
                     (<Card key={index} product={item}></Card>)

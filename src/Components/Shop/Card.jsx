@@ -64,7 +64,7 @@ export default function Card({product}) {
                         onClick={(event) => {
                             addProductsToCart(event, product)
                         }}
-                        className={"absolute top-0 right-0 flex justify-center items-center rounded-full bg-white w-8 h-8 m-2 p-1 font-bold"}>
+                        className={"absolute top-0 right-0 flex justify-center items-center rounded-full bg-white w-10 h-10 m-2 p-1 font-bold hover:bg-black hover:text-white"}>
                         +
                     </button>
                 </figure>

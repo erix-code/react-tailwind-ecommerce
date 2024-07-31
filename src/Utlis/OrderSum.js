@@ -1,3 +1,7 @@
+/**
+ * @param {[]} products
+ * @returns {string}
+ * */
 export const OrderSum = (products) => {
     if (products.length > 0) {
         const sum = products.reduce((accumulator, currentProduct) => {

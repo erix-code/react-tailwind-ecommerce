@@ -6,7 +6,7 @@ import {OrderSum} from "../../Utlis/OrderSum.js";
 import "./styles.css";
 
 export default function Cart() {
-    const { isCartOpen, setIsCartOpen, cartProducts, setCartProducts, setCounter } = useContext(ShoppingCartContext);
+    const {isCartOpen, setIsCartOpen, cartProducts, setCartProducts, setCounter} = useContext(ShoppingCartContext);
 
     const removeProduct = (selectedProduct) => {
         const newCartProducts = cartProducts;
@@ -16,7 +16,19 @@ export default function Cart() {
         const deleted = newCartProducts.splice(index, 1);
         setCartProducts([...newCartProducts]);
     }
-
+    /**
+     * @param {Event} event
+     * @param {{}} changedProduct
+     */
+    const updateProduct = (event, changedProduct) => {
+        const newCartProducts = [...cartProducts];
+        const index = newCartProducts.findIndex((product) => {
+            return product.id === changedProduct.id;
+        });
+        newCartProducts[index].quantity = event.target.value;
+        newCartProducts[index].totalAmount = parseFloat(newCartProducts[index].quantity * newCartProducts[index].price).toFixed(2);
+        setCartProducts(newCartProducts);
+    }
     return (
         <aside className={"fixed top-20 right-0 md:pt-0 xl:pt-0 "}
                hidden={!isCartOpen}>
@@ -30,7 +42,11 @@ export default function Cart() {
                 </div>
                 <div className={"body pt-2"}>
                     {cartProducts.map(((product, index) => (
-                            <OrderCart key={index} product={product} removeProduct={(product) => {removeProduct(product)}}></OrderCart>
+                            <OrderCart
+                                key={index}
+                                updateProduct={updateProduct}
+                                product={product} removeProduct={removeProduct}
+                            ></OrderCart>
                         )
                     ))}
                 </div>

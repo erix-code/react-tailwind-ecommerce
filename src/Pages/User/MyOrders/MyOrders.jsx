@@ -4,8 +4,9 @@ import Title from "../../../Components/Title/Title.jsx";
 import {RiCloseLargeLine} from "react-icons/ri";
 import {OrderContext} from "../../../Context/OrderContext.jsx";
 import OrderCart from "../../../Components/Cart/OrderCart/OrderCart.jsx";
+import {Link} from "react-router-dom";
 export default function MyOrders() {
-    const { orders, setOrders } = useContext(OrderContext);
+    const { orders } = useContext(OrderContext);
 
     const formatDate = (timeMs) => {
         const date = new Date(timeMs);
@@ -17,7 +18,7 @@ export default function MyOrders() {
 
             {orders.map(order => (
                 <div>
-                    <div>{order.id}</div>
+                    <Link className={"cursor-pointer"} to={`/user/order/${order.id}`}>#{order.id}</Link>
                     <div>{formatDate(order.date)}</div>
                     <div className={"body md:px-20 w-full "}>
                         {order.products.map(((product, index) => (

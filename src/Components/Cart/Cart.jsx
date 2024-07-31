@@ -37,9 +37,8 @@ export default function Cart() {
     }
 
     const addOrder = () => {
-
         const newOrder = {
-            id: "#MLT" + getRandomInt(99999),
+            id: "MLT" + getRandomInt(99999),
             date: Date.now(),
             products: cartProducts,
             price: OrderSum(cartProducts),

@@ -1,4 +1,8 @@
 .cart-sidebar{
     width: 520px;
     height: 100vh;
+    @media screen > 320  {
+    width: 100px;
+    height: 100vh
+    }
 }

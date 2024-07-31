@@ -18,7 +18,7 @@ export default function Shop() {
     return (
         <Layout>
             <h1 className={"text-2xl font-bold mb-20"}>Home</h1>
-            <div className={"grid grid-cols-5 px-10 auto-rows-auto gap-y-10"}>
+            <div className={"grid lg:grid-cols-5 grid-cols-2  px-1 md:px-10 auto-rows-auto md:gap-y-10 gap-y-24 gap-x-1"}>
                 {products?.map((item, index) =>
                     (<Card key={index} product={item}></Card>)
                 )}

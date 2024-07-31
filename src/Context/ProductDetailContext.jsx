@@ -7,7 +7,7 @@ export default function ProductDetailProvider({children}) {
     const triggerModal = () => setIsModalOpen(!isModalOpen);
 
     return (
-        <ProductDetailContext.Provider value={{isModalOpen, triggerModal, selectedProduct, setSelectedProduct}}>
+        <ProductDetailContext.Provider value={{isModalOpen, triggerModal, selectedProduct, setSelectedProduct, setIsModalOpen}}>
             {children}
         </ProductDetailContext.Provider>
     )

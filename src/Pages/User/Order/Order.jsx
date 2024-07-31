@@ -2,6 +2,8 @@ import React, {useContext, useEffect, useState} from "react";
 import Layout from "../../../Components/Shop/Layout.jsx";
 import {OrderContext} from "../../../Context/OrderContext.jsx";
 import Title from "../../../Components/Title/Title.jsx";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
+
 import {Link, useParams} from "react-router-dom";
 export default function Order({params}) {
     const { orders, setOrders, findOrderById } = useContext(OrderContext);
@@ -19,8 +21,13 @@ export default function Order({params}) {
     }
     return (
         <Layout>
-            <Title>Order</Title>
+            <div className={"flex justify-start pt-10 items-center md:px-20"}>
+                <Link to={"/user/my-orders"} className={"  flex bg-black text-white w-36 items-center text-center h-10 rounded-lg justify-between p-2 text-lg"}>
+                    <IoArrowBackCircleSharp /> Volver atras
+                </Link>
+            </div>
 
+            <Title>Order</Title>
             { currentOrder &&
                 <div>
                     <div>{formatDate(currentOrder.date)}</div>

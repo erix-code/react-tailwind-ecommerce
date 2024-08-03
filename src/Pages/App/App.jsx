@@ -12,6 +12,7 @@ import './App.css';
 import ProductDetailProvider, {ProductDetailContext} from "../../Context/ProductDetailContext.jsx";
 import Cart from "../../Components/Cart/Cart.jsx";
 import {OrderProvider} from "../../Context/OrderContext.jsx";
+import {ProductListProvider} from "../../Context/ProductListContext.jsx";
 
 const AppRoutes = () => {
     const routes = useRoutes([
@@ -27,21 +28,22 @@ const AppRoutes = () => {
 
 function App() {
     return (
-        <OrderProvider>
-            <ProductDetailProvider>
-                <ShoppingCartProvider>
-                    <BrowserRouter>
-                        <Navbar></Navbar>
-                        <div>
-                            <AppRoutes></AppRoutes>
-                        </div>
-                        <Cart></Cart>
+        <ProductListProvider>
+            <OrderProvider>
+                <ProductDetailProvider>
+                    <ShoppingCartProvider>
+                        <BrowserRouter>
+                            <Navbar></Navbar>
+                            <div>
+                                <AppRoutes></AppRoutes>
+                            </div>
+                            <Cart></Cart>
 
-                    </BrowserRouter>
-                </ShoppingCartProvider>
-            </ProductDetailProvider>
-        </OrderProvider>
-
+                        </BrowserRouter>
+                    </ShoppingCartProvider>
+                </ProductDetailProvider>
+            </OrderProvider>
+        </ProductListProvider>
     )
 }
 

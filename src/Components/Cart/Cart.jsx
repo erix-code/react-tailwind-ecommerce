@@ -46,6 +46,7 @@ export default function Cart() {
         }
         setOrders([...orders, newOrder]);
         setCartProducts([]);
+        setCounter(0);
         navigator("/user/my-orders");
     }
     console.log(orders)

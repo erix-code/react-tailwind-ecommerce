@@ -7,10 +7,10 @@ import {ShoppingCartContext} from "../../Context/ShoppinCartContext.jsx";
 
 const leftNavbar = [
     {name: "General", url: "/"},
-    {name: "Ropa", url: "/clothes"},
-    {name: "Electrodomesticos", url: "/techonology"},
-    {name: "Muebles", url: "/furniture"},
-    {name: "Juguetes", url: "/toys"}
+    {name: "Electronics", url: "/electronics"},
+    {name: "Joyeria", url: "/jewelery"},
+    {name: "Varon", url: "/men's_clothing"},
+    {name: "Mujer", url: "/women's_clothing"}
 ];
 const rightNavbar = [
     {name: "Mis Ordenes", url: "/user/my-orders"},

@@ -7,9 +7,6 @@ export const ProductListProvider = ({children}) => {
     const [ products, setProducts ] = useState(null);
     const [ searchValue, setSearchValue ] = useState("");
 
-    useEffect(() => {
-        getProducts()
-    }, []);
 
     const getProducts = () => {
         axios.get("https://fakestoreapi.com/products").then(response => {
@@ -17,7 +14,14 @@ export const ProductListProvider = ({children}) => {
         });
     }
 
+    const getProductsByCategory = (category) => {
+        axios.get(`https://fakestoreapi.com/products/category${category}`).then(response => {
+            setProducts(response.data);
+        });
+    }
+
     const searchProducts = (value) => {
+        console.log(value);
         if (value.length > 0) {
             const filteredProducts = products.filter((product) => {
                 return product.title.toLowerCase().includes(value.toLowerCase());
@@ -30,7 +34,7 @@ export const ProductListProvider = ({children}) => {
     }
 
     return(
-        <ProductListContext.Provider value={{products, setProducts, searchProducts, searchValue, setSearchValue , getProducts}}>
+        <ProductListContext.Provider value={{products, setProducts, searchProducts, searchValue, setSearchValue , getProducts, getProductsByCategory}}>
             {children}
         </ProductListContext.Provider>
     )

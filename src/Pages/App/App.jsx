@@ -16,7 +16,12 @@ import {ProductListProvider} from "../../Context/ProductListContext.jsx";
 
 const AppRoutes = () => {
     const routes = useRoutes([
-        {path: "/", element: <Shop></Shop>,},
+        {path: "/", element: <Shop></Shop> },
+        {path: "/electronics", element: <Shop></Shop>, },
+        {path: "/jewelery", element: <Shop></Shop>},
+        {path: "/men's_clothing", element: <Shop></Shop>},
+        {path: "/women's_clothing", element: <Shop></Shop>},
+
         {path: "/login", element: <Login></Login>},
         {path: "/user/my-orders", element: <MyOrders></MyOrders>},
         {path: "/user/order/:orderId", element: <Order></Order>},
